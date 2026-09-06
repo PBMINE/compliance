@@ -66,8 +66,23 @@
     enable = true;
     wayland.enable = true;
   };
+  
+  # Flatpak for specfic app
+  services.flatpak.enable = true;
 
-  services.flatpak.enable = true;  
+  # Sound Services
+  # Enable Real-Time access for pipewire
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa = {
+      enable = true;
+      support32Bit = true;
+    };
+    wirepluber.enable = true;
+    jack.enable = true;
+    pulse.enable = true;
+  };  
 
   #Programs require for home to work  
   programs.niri.enable = true;
