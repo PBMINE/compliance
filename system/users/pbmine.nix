@@ -10,12 +10,21 @@
     name = "Adwaita";
     size = 24;
   };
-  programs.git = {
-    enable = true;
-  };
+  
+  # A packages that doesnt required for home to manage it
+  home.packages = with pkgs; [
+    pwvucontrol
+    pfetch-rs
+  ];
 
+  # A Window Manager
   wayland.windowManager.niri.enable = true;
+
+  # A wallpaper services
   services.awww.enable = true;
+
+  # a bunch of programs for user
+  programs.git.enable = true;
   programs.vesktop.enable = true;
   programs.prismlauncher.enable = true;
   programs.fish.enable = true;
