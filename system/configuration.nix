@@ -1,6 +1,6 @@
 { config, pkgs, ... }: 
 {
-  import = [
+  imports = [
     ./hardware/hardware-configuration.nix
     ./disko/disk-config.nix
   ];
@@ -23,18 +23,18 @@
     allowUnfree = true;
   };
 
-  boot.KernelPackages = pkgs.linuxPackages_testing;
+  boot.kernelPackages = pkgs.linuxPackages_testing;
   boot.loader.grub = {
     enable = true;
     efiSupport = true;
     efiInstallAsRemovable = true;
+    device = "nodev";
   };
   boot.loader.efi = {
-    canTouchEfiVariables = true;
-    efiSysMountPoint = "/boot/efi"
+    efiSysMountPoint = "/boot";
   };
 
-  hardware.graphic = {
+  hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
@@ -43,22 +43,22 @@
 
   time.timeZone = "Asia/Bangkok";
 
-  networking.hostname = "phuckingpad"
+  networking.hostName = "phuckingpad";
   networking.wireless.iwd.enable = true;
-  networking.networkmanager = {}
+  networking.networkmanager = {
     enable = true;
     wifi.backend = "iwd";
-  ;
+  };
 
   users.users.pbmine = {
     isNormalUser = true;
     home = "/home/pbmine";
-    description = "Its PBMINE!"
+    description = "Its PBMINE!";
     extraGroups = [
       "wheel"
       "networkmanager"
     ];
   };
 
-  system.StateVersion = "26.11";
+  system.stateVersion = "26.11";
 }

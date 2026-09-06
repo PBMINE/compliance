@@ -13,7 +13,7 @@
   };
 
   outputs = { self, nixpkgs, home-manager, disko }: {
-    nixosConfiguration.nixos = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.phuckpad = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./system/configuration.nix
