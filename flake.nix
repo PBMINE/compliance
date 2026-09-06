@@ -10,15 +10,24 @@
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nvf.url = "github:notashelf/nvf";
   };
 
-  outputs = { self, nixpkgs, home-manager, disko }: {
+  outputs = { self, nixpkgs, home-manager, disko, nvf, ... }: {
+    packages."x86_64-linux".default =
+      (nvf.lib.neovimConfiguration {
+	pkgs = nixpkgs.legacyPaackages."x86_64-linux";
+	modules = [ ./system/neovim/neovim-config.nix ];
+      }).neovim;
+
     nixosConfigurations.phuckpad = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./system/configuration.nix
         disko.nixosModules.disko
         home-manager.nixosModules.home-manager
+	nvf.nixosModules.default
         {
   	  home-manager = {
 	    useGlobalPkgs = true;
