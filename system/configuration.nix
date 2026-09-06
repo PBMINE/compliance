@@ -43,7 +43,7 @@
 
   time.timeZone = "Asia/Bangkok";
 
-  networking.hostName = "phuckingpad";
+  networking.hostName = "phuckpad";
   networking.wireless.iwd.enable = true;
   networking.networkmanager = {
     enable = true;
