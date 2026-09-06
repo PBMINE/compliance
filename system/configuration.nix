@@ -14,7 +14,7 @@
     substituters = [
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://mirror.sjtu.edu.cn/nix-channels/store"
-      "https://mirrors.ustc.edu.en/nix-channels/store"
+      "https://mirrors.ustc.edu.cn/nix-channels/store"
       "https://cache.nixos.org/"
     ];
   };
@@ -54,11 +54,27 @@
     isNormalUser = true;
     home = "/home/pbmine";
     description = "Its PBMINE!";
+    shell = pkgs.fish;
     extraGroups = [
       "wheel"
       "networkmanager"
     ];
   };
 
+  # Global Services!
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
+
+  services.flatpak.enable = true;  
+
+  #Programs require for home to work  
+  programs.niri.enable = true;
+  programs.fish.enable = true;
+
+  # TEMP
+  environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" ];
+ 
   system.stateVersion = "26.11";
 }
