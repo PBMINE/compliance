@@ -22,14 +22,17 @@
   nixpkgs.config = {
     allowUnfree = true;
   };
-
+  
+  # Set NixOS to use Bleeding Edge kernel (eg rc.1,rc.2)
   boot.kernelPackages = pkgs.linuxPackages_testing;
+
   boot.loader.grub = {
     enable = true;
     efiSupport = true;
     efiInstallAsRemovable = true;
     device = "nodev";
   };
+
   boot.loader.efi = {
     efiSysMountPoint = "/boot";
   };
@@ -37,6 +40,7 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
+    extraPackages = with pkgs; [ mesa.opencl vulkan-loader ];
   };
 
   zramSwap.enable = true;
@@ -79,7 +83,7 @@
       enable = true;
       support32Bit = true;
     };
-    wirepluber.enable = true;
+    wireplumber.enable = true;
     jack.enable = true;
     pulse.enable = true;
   };  
