@@ -15,6 +15,7 @@
   home.packages = with pkgs; [
     pwvucontrol
     pfetch-rs
+    nautilus
   ];
 
   # A Window Manager
