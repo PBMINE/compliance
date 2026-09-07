@@ -87,7 +87,10 @@
     jack.enable = true;
     pulse.enable = true;
   };  
-
+  
+  # Enable PAM for swaylock to work (Will be removed soon)
+  security.pam.services.swaylock = {};
+  
   #Programs require for home to work  
   programs.niri.enable = true;
   programs.fish.enable = true;

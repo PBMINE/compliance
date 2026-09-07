@@ -22,6 +22,9 @@
 
   # A wallpaper services
   services.awww.enable = true;
+  
+  # Temp lock-screen services (To be replace with quickshell)
+  programs.swaylock.enable = true;
 
   # a bunch of programs for user
   programs.git.enable = true;
