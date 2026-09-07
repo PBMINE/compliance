@@ -97,6 +97,9 @@
   #Programs require for home to work  
   programs.niri.enable = true;
   programs.fish.enable = true;
+  
+  # Install Steam
+  programs.steam.enable = true;
 
   # Temporary only!!! (I'll find a way soon, I promise!!!)
   environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" ];
