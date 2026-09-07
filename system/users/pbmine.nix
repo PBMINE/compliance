@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }: 
+{  pkgs, ... }: 
 {
   home.username = "pbmine";
   home.homeDirectory = "/home/pbmine";

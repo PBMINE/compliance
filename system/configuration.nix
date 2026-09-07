@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: 
+{ pkgs, ... }: 
 {
   imports = [
     ./hardware/hardware-configuration.nix
@@ -6,11 +6,13 @@
   ];
 
   nix.settings = {
+    # Enabled Flake and it Required Command
     experimental-features = [
       "nix-command"
       "flakes"
     ];
-
+    
+    # Add Chinese nix-channels location to speedup rebuilding for asian (Like ME!)
     substituters = [
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://mirror.sjtu.edu.cn/nix-channels/store"
@@ -18,7 +20,8 @@
       "https://cache.nixos.org/"
     ];
   };
-
+  
+  # Set nixpkgs to allow proprietary packages on nixpkgs
   nixpkgs.config = {
     allowUnfree = true;
   };
@@ -28,7 +31,7 @@
 
   boot.loader.grub = {
     enable = true;
-    efiSupport = true;
+    efiSupport = true;    
     efiInstallAsRemovable = true;
     device = "nodev";
   };
@@ -95,7 +98,7 @@
   programs.niri.enable = true;
   programs.fish.enable = true;
 
-  # TEMP
+  # Temporary only!!! (I'll find a way soon, I promise!!!)
   environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" ];
  
   system.stateVersion = "26.11";
