@@ -25,6 +25,9 @@
   
   # Temp lock-screen services (To be replace with quickshell)
   programs.swaylock.enable = true;
+  
+  # Enable OBS for recording!
+  programs.obs-studio.enable = true;
 
   # a bunch of programs for user
   programs.git.enable = true;
