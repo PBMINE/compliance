@@ -12,16 +12,17 @@
 
     presence.cord-nvim.enable = true;
 
-    formatter.conform-nvim = {
+    lsp = {
       enable = true;
-      presets.alejandra.enable = true;
+      formatOnSave = true;
     };
 
-    lsp.enable = true;
     languages = {
       enableTreesitter = true;
-
+      enableFormat = true;
       nix.enable = true;
+      markdown.enable = true;
+      zig.enable = true;
     };
   };
 }
