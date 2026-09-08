@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   home.username = "pbmine";
   home.homeDirectory = "/home/pbmine";
   home.stateVersion = "26.11";
@@ -31,7 +35,14 @@
 
   programs.nvf = {
     enable = true;
+    # Import the settings instead of writing down here!
     settings = import ./neovim/neovim-config.nix;
+  };
+
+  # Enable quickshell
+  programs.quickshell = {
+    enable = true;
+    package = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default;
   };
   # a bunch of programs for user
   programs.git.enable = true;

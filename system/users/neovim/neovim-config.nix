@@ -15,6 +15,7 @@
     lsp = {
       enable = true;
       formatOnSave = true;
+      lightbulb.enable = true;
     };
 
     languages = {
@@ -23,6 +24,7 @@
       nix.enable = true;
       markdown.enable = true;
       zig.enable = true;
+      qml.enable = true;
     };
   };
 }
