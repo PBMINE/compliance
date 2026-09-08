@@ -17,20 +17,27 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-		extraArgs = ["-n" "CFI" ];
+                extraArgs = [
+                  "-n"
+                  "CFI"
+                ];
                 mountOptions = [ "umask=0077" ];
               };
             };
             root = {
               size = "100%";
-	      name = "compliance";
+              name = "compliance";
               content = {
                 type = "btrfs";
-                extraArgs = [ "-f" "-L" "compliance" ];
+                extraArgs = [
+                  "-f"
+                  "-L"
+                  "compliance"
+                ];
                 subvolumes = {
                   "/root" = {
                     mountpoint = "/";
-		    mountOptions = [ "compress=zstd" ];
+                    mountOptions = [ "compress=zstd" ];
                   };
                   "/home" = {
                     mountOptions = [ "compress=zstd" ];
@@ -43,7 +50,7 @@
                     ];
                     mountpoint = "/nix";
                   };
-		};
+                };
               };
             };
           };
