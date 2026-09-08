@@ -1,4 +1,4 @@
-{ pkgs, ... }: 
+{ pkgs, ... }:
 {
   imports = [
     ./hardware/hardware-configuration.nix
@@ -11,7 +11,7 @@
       "nix-command"
       "flakes"
     ];
-    
+
     # Add Chinese nix-channels location to speedup rebuilding for asian (Like ME!)
     substituters = [
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
@@ -20,18 +20,18 @@
       "https://cache.nixos.org/"
     ];
   };
-  
+
   # Set nixpkgs to allow proprietary packages on nixpkgs
   nixpkgs.config = {
     allowUnfree = true;
   };
-  
+
   # Set NixOS to use Bleeding Edge kernel (eg rc.1,rc.2)
   boot.kernelPackages = pkgs.linuxPackages_testing;
 
   boot.loader.grub = {
     enable = true;
-    efiSupport = true;    
+    efiSupport = true;
     efiInstallAsRemovable = true;
     device = "nodev";
   };
@@ -43,7 +43,10 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = with pkgs; [ mesa.opencl vulkan-loader ];
+    extraPackages = with pkgs; [
+      mesa.opencl
+      vulkan-loader
+    ];
   };
 
   zramSwap.enable = true;
@@ -73,7 +76,7 @@
     enable = true;
     wayland.enable = true;
   };
-  
+
   # Flatpak for specfic app
   services.flatpak.enable = true;
 
@@ -89,15 +92,15 @@
     wireplumber.enable = true;
     jack.enable = true;
     pulse.enable = true;
-  };  
-  
+  };
+
   # Enable PAM for swaylock to work (Will be removed soon)
-  security.pam.services.swaylock = {};
-  
-  #Programs require for home to work  
+  security.pam.services.swaylock = { };
+
+  #Programs require for home to work
   programs.niri.enable = true;
   programs.fish.enable = true;
- 
+
   #Install Fonts (Doesnt find a way to do that with home-manager yet...)
   fonts.packages = with pkgs; [
     nerd-fonts.iosevka
@@ -108,7 +111,10 @@
   programs.steam.enable = true;
 
   # Temporary only!!! (I'll find a way soon, I promise!!!)
-  environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" ];
- 
+  environment.pathsToLink = [
+    "/share/applications"
+    "/share/xdg-desktop-portal"
+  ];
+
   system.stateVersion = "26.11";
 }

@@ -1,4 +1,4 @@
-{  pkgs, ... }: 
+{ pkgs, ... }:
 {
   home.username = "pbmine";
   home.homeDirectory = "/home/pbmine";
@@ -10,7 +10,7 @@
     name = "Adwaita";
     size = 24;
   };
-  
+
   # A packages that doesnt required for home to manage it
   home.packages = with pkgs; [
     pwvucontrol
@@ -23,13 +23,13 @@
 
   # A wallpaper services
   services.awww.enable = true;
-  
+
   # Temp lock-screen services (To be replace with quickshell)
   programs.swaylock.enable = true;
-  
+
   # Enable OBS for recording!
   programs.obs-studio.enable = true;
-  
+
   programs.nvf = {
     enable = true;
     settings = import ./neovim/neovim-config.nix;
@@ -43,4 +43,3 @@
   programs.alacritty.enable = true;
   programs.fuzzel.enable = true;
 }
-
