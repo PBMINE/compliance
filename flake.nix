@@ -45,7 +45,7 @@
             users.pbmine = {
               imports = [
                 nvf.homeManagerModules.default
-                ./system/users/pbmine.nix
+                ./system/users/pbmine/pbmine.nix
               ];
             };
           };

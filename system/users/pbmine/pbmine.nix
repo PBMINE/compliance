@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  config,
   ...
 }: {
   home.username = "pbmine";
@@ -36,7 +37,7 @@
   programs.nvf = {
     enable = true;
     # Import the settings instead of writing down here!
-    settings = import ./neovim/neovim-config.nix;
+    settings = import ./configs/neovim/neovim-config.nix;
   };
 
   # Enable quickshell
@@ -53,5 +54,5 @@
   programs.firefox.enable = true;
   programs.alacritty.enable = true;
   programs.fuzzel.enable = true;
-  xdg.configFile = import ./configs/listing.nix;
+  xdg.configFile = import ./configs/listing.nix {inherit config;};
 }
