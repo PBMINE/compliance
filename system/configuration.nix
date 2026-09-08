@@ -25,6 +25,8 @@
     allowUnfree = true;
   };
 
+  boot.kernelParams = ["drm.panic_screen=qr_code"];
+
   # Set NixOS to use Bleeding Edge kernel (eg rc.1,rc.2)
   boot.kernelPackages = pkgs.linuxPackages_testing;
 
