@@ -17,35 +17,34 @@
     };
   };
 
-  outputs =
-    {
-      nixpkgs,
-      home-manager,
-      disko,
-      nvf,
-      ...
-    }:
-    {
-      nixosConfigurations.phuckpad = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./system/configuration.nix
-          disko.nixosModules.disko
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              backupFileExtension = "backup";
-              users.pbmine = {
-                imports = [
-                  nvf.homeManagerModules.default
-                  ./system/users/pbmine.nix
-                ];
-              };
+  outputs = {
+    nixpkgs,
+    home-manager,
+    disko,
+    nvf,
+    ...
+  }: {
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+    nixosConfigurations.phuckpad = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./system/configuration.nix
+        disko.nixosModules.disko
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            backupFileExtension = "backup";
+            users.pbmine = {
+              imports = [
+                nvf.homeManagerModules.default
+                ./system/users/pbmine.nix
+              ];
             };
-          }
-        ];
-      };
+          };
+        }
+      ];
     };
+  };
 }

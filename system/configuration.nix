@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ./hardware/hardware-configuration.nix
     ./disko/disk-config.nix
@@ -95,7 +94,7 @@
   };
 
   # Enable PAM for swaylock to work (Will be removed soon)
-  security.pam.services.swaylock = { };
+  security.pam.services.swaylock = {};
 
   #Programs require for home to work
   programs.niri.enable = true;

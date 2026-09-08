@@ -12,7 +12,10 @@
 
     presence.cord-nvim.enable = true;
 
-    formatter.conform-nvim.presets.nixfmt-rs.enable = true;
+    formatter.conform-nvim = {
+      enable = true;
+      presets.alejandra.enable = true;
+    };
 
     lsp.enable = true;
     languages = {

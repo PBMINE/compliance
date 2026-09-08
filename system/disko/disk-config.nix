@@ -21,7 +21,7 @@
                   "-n"
                   "CFI"
                 ];
-                mountOptions = [ "umask=0077" ];
+                mountOptions = ["umask=0077"];
               };
             };
             root = {
@@ -37,10 +37,10 @@
                 subvolumes = {
                   "/root" = {
                     mountpoint = "/";
-                    mountOptions = [ "compress=zstd" ];
+                    mountOptions = ["compress=zstd"];
                   };
                   "/home" = {
-                    mountOptions = [ "compress=zstd" ];
+                    mountOptions = ["compress=zstd"];
                     mountpoint = "/home";
                   };
                   "/nix" = {
