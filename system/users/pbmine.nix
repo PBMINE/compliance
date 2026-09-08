@@ -29,7 +29,11 @@
   
   # Enable OBS for recording!
   programs.obs-studio.enable = true;
-
+  
+  programs.nvf = {
+    enable = true;
+    settings = import ./neovim/neovim-config.nix;
+  };
   # a bunch of programs for user
   programs.git.enable = true;
   programs.vesktop.enable = true;

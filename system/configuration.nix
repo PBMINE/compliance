@@ -97,7 +97,13 @@
   #Programs require for home to work  
   programs.niri.enable = true;
   programs.fish.enable = true;
-  
+ 
+  #Install Fonts (Doesnt find a way to do that with home-manager yet...)
+  fonts.packages = with pkgs; [
+    nerd-fonts.iosevka
+    nerd-fonts.iosevka-term
+  ];
+
   # Install Steam
   programs.steam.enable = true;
 
