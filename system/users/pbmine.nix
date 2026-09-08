@@ -44,6 +44,7 @@
     enable = true;
     package = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default;
   };
+
   # a bunch of programs for user
   programs.git.enable = true;
   programs.vesktop.enable = true;
@@ -52,4 +53,5 @@
   programs.firefox.enable = true;
   programs.alacritty.enable = true;
   programs.fuzzel.enable = true;
+  xdg.configFile = import ./configs/listing.nix;
 }
