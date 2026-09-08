@@ -29,7 +29,6 @@
 	    useGlobalPkgs = true;
 	    useUserPackages = true;
             backupFileExtension = "backup";
-            extraSpecialArgs = { inherit nvf; };
             users.pbmine = {
               imports = [
                 nvf.homeManagerModules.default
