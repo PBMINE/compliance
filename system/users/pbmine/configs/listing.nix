@@ -1,5 +1,13 @@
 {config, ...}: let
-  configs = "${config.home.homeDirectory}/compliance/system/users/pbmine/configs";
-in {
-  "niri/config.kdl".source = config.lib.file.mkOutOfStoreSymlink "${configs}/niri/config.kdl";
-}
+  configPath = "${config.home.homeDirectory}/compliance/system/users/pbmine/configs";
+  createSymlink = path: config.lib.file.mkOutOfStoreSymlink path;
+  configs = {
+    niri = "niri";
+    quickshell = "quickshell";
+  };
+in
+  builtins.mapAttrs (name: subPath: {
+    source = createSymlink "${configPath}/${subPath}";
+    recursive = true;
+  })
+  configs

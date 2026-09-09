@@ -16,6 +16,7 @@
       enable = true;
       formatOnSave = true;
       lightbulb.enable = true;
+      presets.qmlls.enable = true;
     };
 
     languages = {
