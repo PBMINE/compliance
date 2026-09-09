@@ -13,8 +13,8 @@ input {
             // For more information, see xkeyboard-config(7).
 
             // For example:
-            // layout "us,ru"
-            // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
+            layout "us,th"
+            options "grp:win_space_toggle"
 
             // If this section is empty, niri will fetch xkb settings
             // from org.freedesktop.locale1. You can control these using
@@ -338,6 +338,13 @@ window-rule {
 
     // Use this instead if you want them visible on third-party screenshot tools.
     // block-out-from "screencast"
+}
+
+window-rule {
+    match app-id="^Alacritty$"
+    background-effect {
+        blur true
+    }
 }
 
 // Example: enable rounded corners for all windows.

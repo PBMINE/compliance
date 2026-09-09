@@ -1,4 +1,4 @@
-{
+{...}: {
   vim = {
     theme = {
       enable = true;
@@ -16,7 +16,6 @@
       enable = true;
       formatOnSave = true;
       lightbulb.enable = true;
-      presets.qmlls.enable = true;
     };
 
     languages = {
@@ -26,6 +25,7 @@
       markdown.enable = true;
       zig.enable = true;
       qml.enable = true;
+      toml.enable = true;
     };
   };
 }
