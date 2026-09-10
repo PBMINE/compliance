@@ -37,7 +37,7 @@
   programs.nvf = {
     enable = true;
     # Import the settings instead of writing down here!
-    settings = import ./configs/neovim/neovim-config.nix {inherit pkgs inputs;};
+    settings = import ./configs/nvf/nvf.nix {inherit pkgs inputs;};
   };
 
   # Enable quickshell
@@ -67,5 +67,5 @@
   programs.firefox.enable = true;
   programs.alacritty.enable = true;
   programs.fuzzel.enable = true;
-  xdg.configFile = import ./configs/listing.nix {inherit config;};
+  xdg.configFile = import ./configs/linking.nix {inherit config;};
 }
