@@ -20,6 +20,7 @@
       url = "git+https://git.outfoxxed.me/quickshell/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    qml-language-server.url = "github:cushycush/qml-language-server";
   };
 
   outputs = {

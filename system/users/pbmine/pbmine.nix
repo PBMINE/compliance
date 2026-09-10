@@ -37,7 +37,7 @@
   programs.nvf = {
     enable = true;
     # Import the settings instead of writing down here!
-    settings = import ./configs/neovim/neovim-config.nix;
+    settings = import ./configs/neovim/neovim-config.nix {inherit pkgs inputs;};
   };
 
   # Enable quickshell
