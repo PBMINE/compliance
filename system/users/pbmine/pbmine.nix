@@ -68,7 +68,14 @@
   programs.prismlauncher.enable = true;
   programs.fish.enable = true;
   programs.firefox.enable = true;
-  programs.alacritty.enable = true;
+  programs.ghostty = {
+    enable = true;
+    installVimSyntax = true;
+    enableFishIntegration = true;
+    settings = {
+      background-opacity = 0.85;
+    };
+  };
   programs.fuzzel.enable = true;
   xdg.configFile = import ./configs/linking.nix {inherit config;};
 }
