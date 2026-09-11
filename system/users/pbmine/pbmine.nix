@@ -20,6 +20,7 @@
     pwvucontrol
     pfetch-rs
     nautilus
+    btop
   ];
 
   # A Window Manager
