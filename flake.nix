@@ -29,11 +29,6 @@
       url = "github:4evy/nixcord";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    stylix = {
-      url = "github:nix-community/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
@@ -42,7 +37,6 @@
     disko,
     nvf,
     nixcord,
-    stylix,
     ...
   } @ inputs: {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
@@ -51,7 +45,6 @@
       modules = [
         ./system/configuration.nix
         disko.nixosModules.disko
-        stylix.nixosModules.stylix
         home-manager.nixosModules.home-manager
         {
           home-manager = {

@@ -47,9 +47,6 @@
     package = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default;
   };
 
-  # Theming with stylix
-  stylix = import ./configs/stylix/stylix.nix;
-
   # Productivity APP
   programs.obsidian = {
     enable = true;
