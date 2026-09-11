@@ -18,6 +18,7 @@
 
     extraPackages = [
       inputs.qml-language-server.packages.${pkgs.stdenv.hostPlatform.system}.default
+      pkgs.kdePackages.qtdeclarative
     ];
 
     lsp = {
@@ -26,7 +27,7 @@
       lightbulb.enable = true;
       servers = {
         qml-language-server = {
-          cmd = ["qml-language-server"];
+          cmd = ["qmlls"];
           filetypes = ["qml"];
           root_markers = ["qmldir" "shell.qml" ".git"];
         };

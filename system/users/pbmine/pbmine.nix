@@ -59,9 +59,10 @@
     };
   };
 
+  programs.nixcord = import ./configs/nixcord/nixcord.nix;
+
   # a bunch of programs for user
   programs.git.enable = true;
-  programs.vesktop.enable = true;
   programs.prismlauncher.enable = true;
   programs.fish.enable = true;
   programs.firefox.enable = true;

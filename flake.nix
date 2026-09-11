@@ -20,7 +20,13 @@
       url = "git+https://git.outfoxxed.me/quickshell/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     qml-language-server.url = "github:cushycush/qml-language-server";
+
+    nixcord = {
+      url = "github:4evy/nixcord";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -28,6 +34,7 @@
     home-manager,
     disko,
     nvf,
+    nixcord,
     ...
   } @ inputs: {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
@@ -45,6 +52,7 @@
             extraSpecialArgs = {inherit inputs;};
             users.pbmine = {
               imports = [
+                nixcord.homeModules.nixcord
                 nvf.homeManagerModules.default
                 ./system/users/pbmine/pbmine.nix
               ];
