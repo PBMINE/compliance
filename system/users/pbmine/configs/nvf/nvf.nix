@@ -6,8 +6,7 @@
   vim = {
     theme = {
       enable = true;
-      name = "everforest";
-      style = "soft";
+      name = "base16";
     };
 
     statusline.lualine.enable = true;

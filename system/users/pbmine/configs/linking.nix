@@ -4,7 +4,6 @@
   configs = {
     niri = "niri";
     quickshell = "quickshell";
-    alacritty = "alacritty";
   };
 in
   builtins.mapAttrs (name: subPath: {

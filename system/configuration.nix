@@ -78,6 +78,9 @@
     wayland.enable = true;
   };
 
+  # System-wide stylix
+  stylix = import ./users/pbmine/configs/stylix/stylix.nix;
+
   # Flatpak for specfic app
   services.flatpak.enable = true;
 
