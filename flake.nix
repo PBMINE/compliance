@@ -2,10 +2,12 @@
   description = "Just a Nix that comply";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     disko = {
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,6 +29,11 @@
       url = "github:4evy/nixcord";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -35,6 +42,7 @@
     disko,
     nvf,
     nixcord,
+    stylix,
     ...
   } @ inputs: {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
@@ -43,6 +51,7 @@
       modules = [
         ./system/configuration.nix
         disko.nixosModules.disko
+        stylix.nixosModules.stylix
         home-manager.nixosModules.home-manager
         {
           home-manager = {
