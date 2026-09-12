@@ -29,6 +29,8 @@
       url = "github:4evy/nixcord";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-flatpak.url = "github:gmodena/nix-flatpak/";
   };
 
   outputs = {
@@ -37,6 +39,7 @@
     disko,
     nvf,
     nixcord,
+    nix-flatpak,
     ...
   } @ inputs: {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
@@ -55,6 +58,7 @@
             users.pbmine = {
               imports = [
                 nixcord.homeModules.nixcord
+                nix-flatpak.homeManagerModules.nix-flatpak
                 nvf.homeManagerModules.default
                 ./system/users/pbmine/pbmine.nix
               ];

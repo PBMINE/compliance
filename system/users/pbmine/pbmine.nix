@@ -29,6 +29,21 @@
   # A wallpaper services
   services.awww.enable = true;
 
+  # Declare Flatpak from modules
+  services.flatpak = {
+    uninstallUnmanaged = true;
+    packages = [
+      {
+        appId = "org.vinegarhq.Sober";
+        origin = "flathub";
+      }
+      {
+        appId = "org.vinegarhq.Vinegar";
+        origin = "flathub";
+      }
+    ];
+  };
+
   # Temp lock-screen services (To be replace with quickshell)
   programs.swaylock.enable = true;
 
