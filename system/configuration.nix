@@ -18,6 +18,9 @@
       "https://mirrors.ustc.edu.cn/nix-channels/store"
       "https://cache.nixos.org/"
     ];
+
+    http-connections = 128;
+    max-substitution-jobs = 128;
   };
 
   # Set nixpkgs to allow proprietary packages on nixpkgs

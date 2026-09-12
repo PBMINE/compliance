@@ -1,5 +1,5 @@
 {
   enable = true;
-  discord.silenceNoModClientWarning = true;
+  discord.enable = false;
   vesktop.enable = true;
 }

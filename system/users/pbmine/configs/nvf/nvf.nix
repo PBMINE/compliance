@@ -19,7 +19,6 @@
 
     extraPackages = [
       inputs.qml-language-server.packages.${pkgs.stdenv.hostPlatform.system}.default
-      pkgs.kdePackages.qtdeclarative
     ];
 
     lsp = {
@@ -32,6 +31,30 @@
           filetypes = ["qml"];
           root_markers = ["qmldir" "shell.qml" ".git"];
         };
+      };
+    };
+
+    lazy.plugins = {
+      "luau-lsp.nvim" = {
+        package = pkgs.vimPlugins.luau-lsp-nvim;
+        setupModule = "luau-lsp";
+        setupOpts = {
+          platform = {
+            type = "roblox";
+          };
+          types = {
+            roblox_security_level = "PluginSecurity";
+          };
+          sourcemap = {
+            enabled = true;
+            autogenerate = true; # automatic generation when the server is initialized
+            rojo_path = "rojo";
+            rojo_project_file = "default.project.json";
+            include_non_scripts = true;
+            sourcemap_file = "sourcemap.json";
+          };
+        };
+        after = "print('Loaded LuaU lsp')";
       };
     };
 

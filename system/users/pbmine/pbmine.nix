@@ -74,6 +74,13 @@
       background-opacity = 0.85;
     };
   };
-  programs.fuzzel.enable = true;
+  programs.fuzzel = {
+    enable = true;
+    settings = {
+      main = {
+        terminal = "ghostty -e";
+      };
+    };
+  };
   xdg.configFile = import ./configs/linking.nix {inherit config;};
 }
