@@ -17,6 +17,10 @@
 
     presence.cord-nvim.enable = true;
 
+    filetree.neo-tree.enable = true;
+
+    tabline.nvimBufferline.enable = true;
+
     extraPackages = [
       inputs.qml-language-server.packages.${pkgs.stdenv.hostPlatform.system}.default
       pkgs.luau-lsp
