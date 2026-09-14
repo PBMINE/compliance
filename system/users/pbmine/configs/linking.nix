@@ -2,7 +2,6 @@
   configPath = "${config.home.homeDirectory}/compliance/system/users/pbmine/configs";
   createSymlink = path: config.lib.file.mkOutOfStoreSymlink path;
   configs = {
-    niri = "niri";
     quickshell = "quickshell";
   };
 in

@@ -75,7 +75,6 @@
             users.pbmine = {
               imports = [
                 nixcord.homeModules.nixcord
-                niri-unstable.homeModules.niri
                 nix-flatpak.homeManagerModules.nix-flatpak
                 nvf.homeManagerModules.default
                 ./system/users/pbmine/pbmine.nix
