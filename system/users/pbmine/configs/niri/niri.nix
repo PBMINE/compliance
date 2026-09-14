@@ -1,5 +1,4 @@
-{pkgs, ...}: {
-  package = pkgs.niri-unstable;
+{...}: {
   config = ''
                     // This config is in the KDL format: https://kdl.dev
     // "/-" comments out the following node.
@@ -272,7 +271,7 @@
 
     // This line starts waybar, a commonly used bar for Wayland compositors.
     spawn-at-startup "waybar"
-    spawn-at-startup "awww-daemon && awww restore"
+    spawn-sh-at-startup "awww-daemon && awww restore"
 
     // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
     // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"

@@ -24,6 +24,7 @@
   ];
 
   # A Window Manager
+  # wayland.windowManager.niri.enable = true;
   programs.niri = import ./configs/niri/niri.nix {inherit pkgs;};
 
   # A wallpaper services

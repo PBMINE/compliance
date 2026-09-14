@@ -59,12 +59,14 @@
       modules = [
         ./system/configuration.nix
         disko.nixosModules.disko
+
         niri-unstable.nixosModules.niri
         {
           nixpkgs.overlays = [
             niri-unstable.overlays.niri
           ];
         }
+
         home-manager.nixosModules.home-manager
         {
           home-manager = {
