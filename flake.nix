@@ -23,14 +23,24 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    qml-language-server.url = "github:cushycush/qml-language-server";
+    qml-language-server = {
+      url = "github:cushycush/qml-language-server";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nixcord = {
       url = "github:4evy/nixcord";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-flatpak.url = "github:gmodena/nix-flatpak/";
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak";
+    };
+
+    niri-unstable = {
+      url = "github:epireyn/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -40,6 +50,7 @@
     nvf,
     nixcord,
     nix-flatpak,
+    niri-unstable,
     ...
   } @ inputs: {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
@@ -48,6 +59,12 @@
       modules = [
         ./system/configuration.nix
         disko.nixosModules.disko
+        niri-unstable.nixosModules.niri
+        {
+          nixpkgs.overlays = [
+            niri-unstable.overlays.niri
+          ];
+        }
         home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -58,6 +75,7 @@
             users.pbmine = {
               imports = [
                 nixcord.homeModules.nixcord
+                niri-unstable.homeModules.niri
                 nix-flatpak.homeManagerModules.nix-flatpak
                 nvf.homeManagerModules.default
                 ./system/users/pbmine/pbmine.nix

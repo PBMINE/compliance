@@ -24,8 +24,10 @@
   };
 
   # Set nixpkgs to allow proprietary packages on nixpkgs
-  nixpkgs.config = {
-    allowUnfree = true;
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
   };
 
   boot.kernelParams = ["drm.panic_screen=qr_code"];
@@ -78,7 +80,10 @@
   # Global Services!
   services.displayManager.sddm = {
     enable = true;
-    wayland.enable = true;
+    wayland = {
+      enable = true;
+      compositor = "kwin";
+    };
   };
 
   # Flatpak for specfic app
