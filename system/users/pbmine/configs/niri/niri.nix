@@ -1,6 +1,15 @@
-{...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
+  settings = {
+    xwayland-satellite = {
+      path = "${lib.getExe pkgs.xwayland-satellite-unstable}";
+    };
+  };
   config = ''
-                    // This config is in the KDL format: https://kdl.dev
+    // This config is in the KDL format: https://kdl.dev
     // "/-" comments out the following node.
     // Check the wiki for a full description of the configuration:
     // https://niri-wm.github.io/niri/Configuration:-Introduction
@@ -270,7 +279,7 @@
     // See the binds section below for more spawn examples.
 
     // This line starts waybar, a commonly used bar for Wayland compositors.
-    spawn-at-startup "waybar"
+    spawn-at-startup "quickshell"
     spawn-sh-at-startup "awww-daemon && awww restore"
 
     // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
@@ -372,7 +381,7 @@
         Mod+Shift+Slash { show-hotkey-overlay; }
 
         // Suggested binds for running programs: terminal, app launcher, screen locker.
-        Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "ghostty"; }
+        Mod+T hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
         Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
         Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 

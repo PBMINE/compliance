@@ -60,7 +60,27 @@
             sourcemap_file = "sourcemap.json";
           };
         };
-        after = "print('Loaded LuaU lsp')";
+        after = "print('Init LuaU Languages Server!')";
+      };
+    };
+
+    formatter = {
+      conform-nvim = {
+        enable = true;
+        presets = {
+          stylua = {
+            enable = true;
+          };
+        };
+      };
+    };
+
+    diagnostics = {
+      enable = true;
+      presets = {
+        selene = {
+          enable = true;
+        };
       };
     };
 

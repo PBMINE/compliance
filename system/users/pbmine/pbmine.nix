@@ -2,8 +2,17 @@
   pkgs,
   inputs,
   config,
+  lib,
   ...
-}: {
+}: let
+  customQuickshell = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default.withModules [
+    inputs.qml-niri.packages.${pkgs.stdenv.hostPlatform.system}.default
+    pkgs.kdePackages.qt5compat
+    pkgs.kdePackages.qtmultimedia
+    pkgs.kdePackages.qtimageformats
+    pkgs.kdePackages.qtsvg
+  ];
+in {
   home.username = "pbmine";
   home.homeDirectory = "/home/pbmine";
   home.stateVersion = "26.11";
@@ -21,11 +30,11 @@
     pfetch-rs
     nautilus
     btop
+    xwayland-satellite-unstable
   ];
 
   # A Window Manager
-  # wayland.windowManager.niri.enable = true;
-  programs.niri = import ./configs/niri/niri.nix {inherit pkgs;};
+  programs.niri = import ./configs/niri/niri.nix {inherit pkgs lib;};
 
   # A wallpaper services
   services.awww.enable = true;
@@ -48,7 +57,7 @@
   # Enable quickshell
   programs.quickshell = {
     enable = true;
-    package = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    package = customQuickshell;
   };
 
   # Productivity APP

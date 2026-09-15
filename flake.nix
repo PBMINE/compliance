@@ -37,9 +37,15 @@
       url = "github:gmodena/nix-flatpak";
     };
 
-    niri-unstable = {
+    niri = {
       url = "github:epireyn/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    qml-niri = {
+      url = "github:imiric/qml-niri/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.quickshell.follows = "quickshell";
     };
   };
 
@@ -50,23 +56,20 @@
     nvf,
     nixcord,
     nix-flatpak,
-    niri-unstable,
+    niri,
     ...
   } @ inputs: {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
     nixosConfigurations.phuckpad = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = {inherit inputs;};
       modules = [
         ./system/configuration.nix
         disko.nixosModules.disko
-
-        niri-unstable.nixosModules.niri
+        niri.nixosModules.niri
         {
-          nixpkgs.overlays = [
-            niri-unstable.overlays.niri
-          ];
+          nixpkgs.overlays = [inputs.niri.overlays.niri];
         }
-
         home-manager.nixosModules.home-manager
         {
           home-manager = {

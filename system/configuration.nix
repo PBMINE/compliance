@@ -106,11 +106,12 @@
   # Enable PAM for swaylock to work (Will be removed soon)
   security.pam.services.swaylock = {};
 
-  #Programs require for home to work
+  # Programs require for home to work
   programs.niri = {
     enable = true;
     package = pkgs.niri-unstable;
   };
+
   programs.fish.enable = true;
 
   #Install Fonts (Doesnt find a way to do that with home-manager yet...)
