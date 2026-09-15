@@ -280,7 +280,7 @@
 
     // This line starts waybar, a commonly used bar for Wayland compositors.
     spawn-at-startup "quickshell"
-    spawn-sh-at-startup "awww-daemon && awww restore"
+    spawn-sh-at-startup "awww restore"
 
     // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
     // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
