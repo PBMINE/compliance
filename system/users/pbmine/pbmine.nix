@@ -83,9 +83,7 @@ in {
     enable = true;
     installVimSyntax = true;
     enableFishIntegration = true;
-    settings = {
-      background-opacity = 0.85;
-    };
+    settings = import ./configs/ghostty/ghostty.nix;
   };
   programs.fuzzel = {
     enable = true;
