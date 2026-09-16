@@ -26,9 +26,10 @@ PanelWindow {
         color: "transparent"
 
         // Font and color
-        property color colBg: "#1a1b26"
+        property color colBg: "#D81a1b26"
         property color colCyan: "#0db9d7"
-        property color colMuted: "#444b6a"
+        property color colWhite: "#FFFFFF"
+        property color colMuted: "#D8444b6a"
         property color colBlue: "#7aa2f7"
         property color colYellow: "#e0af68"
         property string fontFamily: "Iosevka Nerd Font"
@@ -105,22 +106,26 @@ PanelWindow {
                         anchors.margins: 8
                         Repeater {
                                 model: niri.workspaces
-
-                                Text {
+                                Rectangle {
                                         property bool isActive: model.isFocused
+                                        color: isActive ? root.colBlue : "transparent"
+                                        Layout.fillHeight: true
+                                        Layout.preferredWidth: height
+                                        Text {
+                                                text: model.index
+                                                color: isActive ? root.colBg : root.colWhite
+                                                anchors.centerIn: parent
+                                                font {
+                                                        family: root.fontFamily
+                                                        pixelSize: root.fontSize
+                                                        bold: true
+                                                }
 
-                                        text: model.index
-                                        color: isActive ? "#0bd9d7" : "#7aa2f7"
-                                        font {
-                                                family: root.fontFamily
-                                                pixelSize: root.fontSize
-                                                bold: true
-                                        }
-
-                                        MouseArea {
-                                                anchors.fill: parent
-                                                onClicked: niri.focusWorkspaceById(model.id)
-                                                cursorShape: Qt.PointingHandCursor
+                                                MouseArea {
+                                                        anchors.fill: parent
+                                                        onClicked: niri.focusWorkspaceById(model.id)
+                                                        cursorShape: Qt.PointingHandCursor
+                                                }
                                         }
                                 }
                         }
@@ -131,7 +136,7 @@ PanelWindow {
 
                         Text {
                                 text: "Battery " + batteryPercentage + "%"
-                                color: root.colBlue
+                                color: root.colWhite
                                 font {
                                         family: root.fontFamily
                                         pixelSize: root.fontSize
@@ -147,7 +152,7 @@ PanelWindow {
 
                         Text {
                                 text: "CPU " + cpuUsage + "%"
-                                color: root.colYellow
+                                color: root.colWhite
                                 font {
                                         family: root.fontFamily
                                         pixelSize: root.fontSize
@@ -164,7 +169,8 @@ PanelWindow {
                         Text {
                                 id: clock
                                 text: Qt.formatDateTime(new Date(), "ddd, MMM dd - HH:mm")
-                                color: root.colCyan
+                                color: root.colWhite
+                                Layout.rightMargin: 10
                                 font {
                                         family: root.fontFamily
                                         pixelSize: root.fontSize
@@ -177,12 +183,6 @@ PanelWindow {
                                         repeat: true
                                         onTriggered: clock.text = Qt.formatDateTime(new Date(), "ddd, MMM dd - HH:mm")
                                 }
-                        }
-
-                        Rectangle {
-                                width: 1
-                                height: 16
-                                color: root.colMuted
                         }
                 }
         }

@@ -339,6 +339,13 @@
         open-floating true
     }
 
+    layer-rule {
+        match namespace="^quickshell$"
+        background-effect {
+                blur true
+        }
+    }
+
     // Example: block out two password managers from screen capture.
     // (This example rule is commented out with a "/-" in front.)
     /-window-rule {
