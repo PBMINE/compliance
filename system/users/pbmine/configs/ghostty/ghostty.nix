@@ -1,5 +1,5 @@
 {
-  window-padding-x = 10;
-  window-padding-y = 10;
+  window-padding-x = 30;
+  window-padding-y = 30;
   background-opacity = 0.85;
 }
