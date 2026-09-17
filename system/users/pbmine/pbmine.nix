@@ -30,6 +30,7 @@ in {
     pfetch-rs
     nautilus
     btop
+    krita
     xwayland-satellite-unstable
   ];
 
