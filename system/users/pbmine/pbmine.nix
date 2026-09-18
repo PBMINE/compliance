@@ -31,6 +31,8 @@ in {
     nautilus
     btop
     krita
+    opencode-desktop
+    rust-analyzer
     xwayland-satellite-unstable
   ];
 
