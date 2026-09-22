@@ -32,8 +32,11 @@ in {
     btop
     krita
     opencode-desktop
+    # Opencode DOES have HM but not right now!
+    opencode
     rust-analyzer
     xwayland-satellite-unstable
+    arduino-ide
   ];
 
   # A Window Manager

@@ -47,6 +47,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.quickshell.follows = "quickshell";
     };
+
+    users-secrets = {
+      url = "path:/home/pbmine/secret-modules";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -57,6 +62,7 @@
     nixcord,
     nix-flatpak,
     niri,
+    users-secrets,
     ...
   } @ inputs: {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
@@ -67,6 +73,7 @@
         ./system/configuration.nix
         disko.nixosModules.disko
         niri.nixosModules.niri
+        users-secrets.nixosModules.secret-user
         {
           nixpkgs.overlays = [inputs.niri.overlays.niri];
         }

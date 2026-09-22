@@ -30,6 +30,8 @@
     };
   };
 
+  hardware.opentabletdriver.enable = true;
+
   boot.kernelParams = ["drm.panic_screen=qr_code"];
 
   # Set NixOS to use Bleeding Edge kernel (eg rc.1,rc.2)
@@ -45,6 +47,8 @@
   boot.loader.efi = {
     efiSysMountPoint = "/boot";
   };
+
+  hardware.uinput.enable = true;
 
   hardware.graphics = {
     enable = true;
@@ -74,6 +78,7 @@
     extraGroups = [
       "wheel"
       "networkmanager"
+      "dialout"
     ];
   };
 
