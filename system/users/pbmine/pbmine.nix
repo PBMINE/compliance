@@ -13,15 +13,23 @@
     pkgs.kdePackages.qtsvg
   ];
 in {
-  home.username = "pbmine";
-  home.homeDirectory = "/home/pbmine";
-  home.stateVersion = "26.11";
-  home.pointerCursor = {
-    enable = true;
-    gtk.enable = true;
-    package = pkgs.adwaita-icon-theme;
-    name = "Adwaita";
-    size = 24;
+  home = {
+    username = "pbmine";
+    homeDirectory = "/home/pbmine";
+    stateVersion = "26.11";
+    pointerCursor = {
+      enable = true;
+      gtk.enable = true;
+      package = pkgs.adwaita-icon-theme;
+      name = "Adwaita";
+      size = 24;
+    };
+
+    # Global Shell intergration
+
+    shell = {
+      enableFishIntegration = true;
+    };
   };
 
   # A packages that doesnt required for home to manage it
@@ -38,6 +46,11 @@ in {
     xwayland-satellite-unstable
     arduino-ide
   ];
+
+  # Stylish Prompt
+  programs.starship = {
+    enable = true;
+  };
 
   # A Window Manager
   programs.niri = import ./configs/niri/niri.nix {inherit pkgs lib;};
@@ -88,7 +101,6 @@ in {
   programs.ghostty = {
     enable = true;
     installVimSyntax = true;
-    enableFishIntegration = true;
     settings = import ./configs/ghostty/ghostty.nix;
   };
   programs.fuzzel = {
