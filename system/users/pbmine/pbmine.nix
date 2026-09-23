@@ -72,6 +72,20 @@ in {
     settings = import ./configs/nvf/nvf.nix {inherit pkgs inputs;};
   };
 
+  # Colors intergration
+  programs.matugen = {
+    enable = true;
+    variant = "dark";
+    jsonFormat = "hex";
+    palette = "default";
+    templates = {
+      quickshell = {
+        input_path = "./configs/matugen/quickshell.json";
+        output_path = "~/.local/state/quickshell/generated/colors.json";
+      };
+    };
+  };
+
   # Enable quickshell
   programs.quickshell = {
     enable = true;
