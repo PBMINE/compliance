@@ -52,6 +52,11 @@
       url = "path:/home/pbmine/secret-modules";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    matugen = {
+      url = "github:InioX/Matugen";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -63,6 +68,7 @@
     nix-flatpak,
     niri,
     users-secrets,
+    matugen,
     ...
   } @ inputs: {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
@@ -77,6 +83,7 @@
         {
           nixpkgs.overlays = [inputs.niri.overlays.niri];
         }
+        matugen.nixosModules.default
         home-manager.nixosModules.home-manager
         {
           home-manager = {

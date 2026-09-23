@@ -1,7 +1,6 @@
 {
   pkgs,
   inputs,
-  config,
   lib,
   ...
 }: let
@@ -77,6 +76,10 @@ in {
   programs.quickshell = {
     enable = true;
     package = customQuickshell;
+    configs = {
+      shell = ./configs/quickshell/shell.qml;
+      Colors = ./configs/quickshell/Colors.qml;
+    };
   };
 
   # Productivity APP
@@ -111,5 +114,6 @@ in {
       };
     };
   };
-  xdg.configFile = import ./configs/linking.nix {inherit config;};
+  # Deprecating Symlinking using xdg.configFile
+  # xdg.configFile = import ./configs/linking.nix {inherit config;};
 }
