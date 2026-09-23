@@ -83,7 +83,6 @@
         {
           nixpkgs.overlays = [inputs.niri.overlays.niri];
         }
-        matugen.nixosModules.default
         home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -96,6 +95,7 @@
                 nixcord.homeModules.nixcord
                 nix-flatpak.homeManagerModules.nix-flatpak
                 nvf.homeManagerModules.default
+                matugen.nixosModules.default
                 ./system/users/pbmine/pbmine.nix
               ];
             };

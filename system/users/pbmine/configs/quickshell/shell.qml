@@ -4,6 +4,7 @@ import Quickshell.Io
 import QtQuick
 import QtQuick.Layouts
 import Niri
+import "Colors"
 
 PanelWindow {
         id: root
@@ -26,12 +27,12 @@ PanelWindow {
         color: "transparent"
 
         // Font and color
-        property color colBg: "#D81a1b26"
-        property color colCyan: "#0db9d7"
-        property color colWhite: "#FFFFFF"
-        property color colMuted: "#D8444b6a"
-        property color colBlue: "#7aa2f7"
-        property color colYellow: "#e0af68"
+        property color colBg: Qt.alpha(Colors.md3.surface_container, 0.85)
+        property color colCyan: Colors.md3.secondary
+        property color colWhite: Colors.md3.on_surface
+        property color colMuted: Colors.md3.outline_variant
+        property color colBlue: Colors.md3.primary
+        property color colYellow: Colors.md3.tertiary
         property string fontFamily: "Iosevka Nerd Font"
         property int fontSize: 12
 

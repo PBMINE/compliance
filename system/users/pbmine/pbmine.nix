@@ -2,6 +2,7 @@
   pkgs,
   inputs,
   lib,
+  config,
   ...
 }: let
   customQuickshell = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default.withModules [
@@ -42,6 +43,7 @@ in {
     # Opencode DOES have HM but not right now!
     opencode
     rust-analyzer
+    inputs.matugen.packages.${pkgs.stdenv.hostPlatform.system}.default
     xwayland-satellite-unstable
     arduino-ide
   ];
@@ -76,15 +78,16 @@ in {
   programs.matugen = {
     enable = true;
     variant = "dark";
-    jsonFormat = "hex";
-    palette = "default";
+    jsonFormat = "rgb";
     templates = {
       quickshell = {
-        input_path = "./configs/matugen/quickshell.json";
-        output_path = "~/.local/state/quickshell/generated/colors.json";
+        input_path = ./configs/matugen/quickshell.json;
+        output_path = ["$HOME/.local/state/quickshell/generated/colors.json"];
       };
     };
   };
+
+  home.file.".local/state/quickshell/generated/colors.json".source = "${config.programs.matugen.theme.files}/.local/state/quickshell/generated/colors.json";
 
   # Enable quickshell
   programs.quickshell = {
