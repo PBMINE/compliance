@@ -30,7 +30,7 @@ PanelWindow {
         property color colBg: Qt.alpha(Colors.md3.surface_container, 0.85)
         property color colCyan: Colors.md3.secondary
         property color colWhite: Colors.md3.on_surface
-        property color colMuted: Colors.md3.outline_variant
+        property color colMuted: Qt.alpha(Colors.md3.outline_variant, 0.85)
         property color colBlue: Colors.md3.primary
         property color colYellow: Colors.md3.tertiary
         property string fontFamily: "Iosevka Nerd Font"
