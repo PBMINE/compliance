@@ -78,6 +78,7 @@ in {
   programs.matugen = {
     enable = true;
     variant = "dark";
+    wallpaper = ./wallpapers/red_star_os_1.jpg;
     jsonFormat = "rgb";
     templates = {
       quickshell = {
