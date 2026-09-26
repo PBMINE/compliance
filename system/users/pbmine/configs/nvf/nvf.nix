@@ -40,6 +40,12 @@
       };
     };
 
+    treesitter = {
+      grammars = with pkgs; [
+        vimPlugins.nvim-treesitter.grammarPlugins.kdl
+      ];
+    };
+
     lazy.plugins = {
       "luau-lsp.nvim" = {
         package = pkgs.vimPlugins.luau-lsp-nvim;

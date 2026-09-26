@@ -95,8 +95,8 @@ in {
     enable = true;
     package = customQuickshell;
     configs = {
-      shell = ./configs/quickshell/shell.qml;
-      Colors = ./configs/quickshell/Colors.qml;
+      "shell.qml" = ./configs/quickshell/shell.qml;
+      "Colors.qml" = ./configs/quickshell/Colors.qml;
     };
   };
 

@@ -9,5 +9,9 @@
       appId = "org.vinegarhq.Vinegar";
       origin = "flathub";
     }
+    {
+      appId = "com.usebottles.bottles";
+      origin = "flathub";
+    }
   ];
 }
