@@ -68,6 +68,24 @@
         };
         after = "print('Init LuaU Languages Server!')";
       };
+
+      "rojo.nvim" = {
+        package =
+          (pkgs.fetchFromGitHub {
+            owner = "ShouxTech";
+            repo = "rojo.nvim";
+            rev = "main";
+            hash = "sha256-gg/i2pTkSgK9B6lqSu3iumKF6ETRfJLS1rF9IkSSndI=";
+          }).overrideAttrs (oldAttrs: {
+            pname = "rojo.nvim";
+          });
+
+        setupModule = "rojo";
+        setupOpts = {};
+        after = ''
+          print('rojo.nvim loaded successfully')
+        '';
+      };
     };
 
     formatter = {
@@ -101,6 +119,7 @@
         lsp.enable = false;
       };
       toml.enable = true;
+      json.enable = true;
     };
   };
 }
