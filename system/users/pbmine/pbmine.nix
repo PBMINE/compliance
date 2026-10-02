@@ -12,6 +12,7 @@
     pkgs.kdePackages.qtimageformats
     pkgs.kdePackages.qtsvg
   ];
+  makeSymlink = path: config.lib.file.mkOutOfStoreSymlink path;
 in {
   home = {
     username = "pbmine";
@@ -74,22 +75,6 @@ in {
     settings = import ./configs/nvf/nvf.nix {inherit pkgs inputs;};
   };
 
-  # Colors intergration
-  programs.matugen = {
-    enable = true;
-    variant = "dark";
-    wallpaper = ./wallpapers/red_star_os_1.jpg;
-    jsonFormat = "rgb";
-    templates = {
-      quickshell = {
-        input_path = ./configs/matugen/quickshell.json;
-        output_path = ["$HOME/.local/state/quickshell/generated/colors.json"];
-      };
-    };
-  };
-
-  home.file.".local/state/quickshell/generated/colors.json".source = "${config.programs.matugen.theme.files}/.local/state/quickshell/generated/colors.json";
-
   # Enable quickshell
   programs.quickshell = {
     enable = true;
@@ -132,6 +117,10 @@ in {
       };
     };
   };
-  # Deprecating Symlinking using xdg.configFile
-  # xdg.configFile = import ./configs/linking.nix {inherit config;};
+
+  # For matugen instant use, Only flake version of the package are used
+  xdg.configFile."matugen" = {
+    source = makeSymlink "${config.home.homeDirectory}/compliance/system/users/pbmine/configs/matugen";
+    recursive = true;
+  };
 }
