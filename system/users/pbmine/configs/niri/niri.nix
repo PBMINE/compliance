@@ -8,6 +8,7 @@
       path = "${lib.getExe pkgs.xwayland-satellite-unstable}";
     };
   };
+
   config = ''
     // This config is in the KDL format: https://kdl.dev
     // "/-" comments out the following node.
@@ -272,6 +273,8 @@
             // bottom 64
         }
     }
+
+    include "./colors.kdl"
 
     // Add lines like this to spawn processes at startup.
     // Note that running niri as a session supports xdg-desktop-autostart,
