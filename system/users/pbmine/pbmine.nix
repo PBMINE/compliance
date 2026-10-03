@@ -123,4 +123,9 @@ in {
     source = makeSymlink "${config.home.homeDirectory}/compliance/system/users/pbmine/configs/matugen";
     recursive = true;
   };
+
+  xdg.configFile."niri" = {
+    source = makeSymlink "${config.home.homeDirectory}/compliance/system/users/pbmine/configs/niri/niri-configs";
+    recursive = true;
+  };
 }
