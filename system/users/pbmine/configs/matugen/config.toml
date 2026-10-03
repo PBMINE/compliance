@@ -2,7 +2,7 @@
 
 [config.wallpaper]
 set     = true
-command = "awww img --transition-type wave {{ image }}"
+command = "awww img --transition-type wave --transition-angle 270 --transition-fps 60 {{ image }}"
 
 [templates.quickshell]
 input_path  = 'templates/quickshell.json'

@@ -4,13 +4,6 @@
   ...
 }: {
   vim = {
-    theme = {
-      enable = true;
-      name = "everforest";
-      style = "medium";
-      transparent = true;
-    };
-
     statusline.lualine.enable = true;
     telescope.enable = true;
     autocomplete.nvim-cmp.enable = true;
@@ -47,6 +40,22 @@
     };
 
     lazy.plugins = {
+      "matugen.nvim" = {
+        package =
+          (pkgs.fetchFromGitHub {
+            owner = "Senal-D-A-Gunaratna";
+            repo = "matugen.nvim";
+            rev = "main";
+            hash = "sha256-U0CObdREGvd/Z4Bi8dDlf5mm/Mw/2F7dTxIP+86ajOs=";
+          }).overrideAttrs (oldAttrs: {
+            pname = "matugen.nvim";
+          });
+        setupModule = "matugen";
+        setupOpts = {
+          palette_path = "~/.config/matugen/themes/nvim-colors.json";
+        };
+      };
+
       "luau-lsp.nvim" = {
         package = pkgs.vimPlugins.luau-lsp-nvim;
         setupModule = "luau-lsp";
@@ -66,7 +75,6 @@
             sourcemap_file = "sourcemap.json";
           };
         };
-        after = "print('Init LuaU Languages Server!')";
       };
 
       "rojo.nvim" = {
@@ -82,24 +90,6 @@
 
         setupModule = "rojo";
         setupOpts = {};
-        after = ''
-          print('rojo.nvim loaded successfully')
-        '';
-      };
-      "matugen.nvim" = {
-        package =
-          (pkgs.fetchFromGitHub {
-            owner = "Senal-D-A-Gunaratna";
-            repo = "matugen.nvim";
-            rev = "main";
-            hash = "sha256-U0CObdREGvd/Z4Bi8dDlf5mm/Mw/2F7dTxIP+86ajOs=";
-          }).overrideAttrs (oldAttrs: {
-            pname = "matugen.nvim";
-          });
-        setupModule = "matugen";
-        setupOpts = {
-          palette_path = "~/.config/matugen/themes/nvim-colors.json";
-        };
       };
     };
 
