@@ -87,15 +87,18 @@
         '';
       };
       "matugen.nvim" = {
-        package = pkgs.fetchFromGitHub {
-          owner = "Senal-D-A-Gunaratna";
-          repo = "matugen.nvim";
-          rev = "main";
-          hash = "";
-        };
+        package =
+          (pkgs.fetchFromGitHub {
+            owner = "Senal-D-A-Gunaratna";
+            repo = "matugen.nvim";
+            rev = "main";
+            hash = "sha256-U0CObdREGvd/Z4Bi8dDlf5mm/Mw/2F7dTxIP+86ajOs=";
+          }).overrideAttrs (oldAttrs: {
+            pname = "matugen.nvim";
+          });
         setupModule = "matugen";
         setupOpts = {
-          palette_path = "~/.cache/matugen/nvim-colors.json";
+          palette_path = "~/.config/matugen/themes/nvim-colors.json";
         };
       };
     };

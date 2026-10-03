@@ -12,3 +12,8 @@ output_path = '~/.local/state/quickshell/generated/colors.json'
 input_path  = "templates/nvim-colors.json"
 output_path = "~/.config/matugen/themes/nvim-colors.json"
 post_hook   = "pkill -SIGUSR1 nvim"
+
+[templates.ghostty]
+input_path  = 'templates/ghostty'
+output_path = '~/.config/ghostty/themes/Matugen'
+post_hook   = 'pkill -SIGUSR2 ghostty'
