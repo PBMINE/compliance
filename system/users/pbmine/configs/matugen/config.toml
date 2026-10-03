@@ -1,3 +1,14 @@
+[config]
+
+[config.wallpaper]
+set     = true
+command = "awww img --transition-type wave {{ image }}"
+
 [templates.quickshell]
-input_path  = 'path/to/template'
+input_path  = 'templates/quickshell.json'
 output_path = '~/.local/state/quickshell/generated/colors.json'
+
+[templates.neovim]
+input_path  = "templates/nvim-colors.json"
+output_path = "~/.config/matugen/themes/nvim-colors.json"
+post_hook   = "pkill -SIGUSR1 nvim"

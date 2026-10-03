@@ -86,6 +86,18 @@
           print('rojo.nvim loaded successfully')
         '';
       };
+      "matugen.nvim" = {
+        package = pkgs.fetchFromGitHub {
+          owner = "Senal-D-A-Gunaratna";
+          repo = "matugen.nvim";
+          rev = "main";
+          hash = "";
+        };
+        setupModule = "matugen";
+        setupOpts = {
+          palette_path = "~/.cache/matugen/nvim-colors.json";
+        };
+      };
     };
 
     formatter = {

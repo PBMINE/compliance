@@ -30,6 +30,10 @@
     };
   };
 
+  # Virtualization Support
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = ["pbmine"];
+
   hardware.opentabletdriver.enable = true;
 
   boot.kernelParams = ["drm.panic_screen=qr_code"];
