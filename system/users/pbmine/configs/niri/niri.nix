@@ -8,4 +8,6 @@
       path = "${lib.getExe pkgs.xwayland-satellite-unstable}";
     };
   };
+
+  config = null;
 }

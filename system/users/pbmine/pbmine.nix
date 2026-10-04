@@ -119,13 +119,17 @@ in {
   };
 
   # For matugen instant use, Only flake version of the package are used
-  xdg.configFile."matugen" = {
-    source = makeSymlink "${config.home.homeDirectory}/compliance/system/users/pbmine/configs/matugen";
-    recursive = true;
-  };
 
-  xdg.configFile."niri" = {
-    source = makeSymlink "${config.home.homeDirectory}/compliance/system/users/pbmine/configs/niri/niri-configs";
-    recursive = true;
-  };
+  xdg.configFile = lib.mkMerge [
+    {
+      "matugen" = {
+        source = makeSymlink "${config.home.homeDirectory}/compliance/system/users/pbmine/configs/matugen";
+        recursive = true;
+      };
+
+      "niri" = {
+        source = makeSymlink "${config.home.homeDirectory}/compliance/system/users/pbmine/configs/niri/niri-configs";
+      };
+    }
+  ];
 }
