@@ -237,6 +237,7 @@ overview {
     }
 }
 
+
 include "./colors.kdl"
 // Add lines like this to spawn processes at startup.
 // Note that running niri as a session supports xdg-desktop-autostart,
@@ -309,7 +310,6 @@ layer-rule {
         blur true
     }
 }
-
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {

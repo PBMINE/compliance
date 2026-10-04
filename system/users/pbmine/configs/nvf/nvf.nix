@@ -18,6 +18,8 @@
       inputs.qml-language-server.packages.${pkgs.stdenv.hostPlatform.system}.default
       pkgs.luau-lsp
       pkgs.rojo
+      pkgs.imagemagick
+      pkgs.ghostscript
     ];
 
     lsp = {
@@ -113,6 +115,17 @@
       };
     };
 
+    utility = {
+      images = {
+        image-nvim = {
+          enable = true;
+          setupOpts = {
+            backend = "kitty";
+          };
+        };
+      };
+    };
+
     languages = {
       enableTreesitter = true;
       enableFormat = true;
@@ -125,6 +138,8 @@
       };
       toml.enable = true;
       json.enable = true;
+      lua.enable = true;
+      bash.enable = true;
     };
   };
 }
