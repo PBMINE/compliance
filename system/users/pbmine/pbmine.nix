@@ -131,7 +131,7 @@ in {
         source = makeSymlink "${config.home.homeDirectory}/compliance/system/users/pbmine/configs/niri/niri-configs";
       };
 
-      "ghostty/shader" = {
+      "ghostty/shaders" = {
         source = makeSymlink "${config.home.homeDirectory}/compliance/system/users/pbmine/configs/ghostty/shaders";
       };
     }
