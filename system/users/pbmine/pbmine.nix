@@ -52,6 +52,9 @@ in {
   # Stylish Prompt
   programs.starship = {
     enable = true;
+    settings = {
+      line_break.disabled = true;
+    };
   };
 
   # A Window Manager
@@ -102,13 +105,22 @@ in {
   # a bunch of programs for user
   programs.git.enable = true;
   programs.prismlauncher.enable = true;
-  programs.fish.enable = true;
+
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = ''
+      set fish_greeting
+    '';
+  };
+
   programs.firefox.enable = true;
+
   programs.ghostty = {
     enable = true;
     installVimSyntax = true;
     settings = import ./configs/ghostty/ghostty.nix;
   };
+
   programs.fuzzel = {
     enable = true;
     settings = {
