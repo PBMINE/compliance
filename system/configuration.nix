@@ -4,33 +4,39 @@
     ./disko/disk-config.nix
   ];
 
-  nix.settings = {
-    # Enabled Flake and it Required Command
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "3d";
+      options = "--delete-older-than 3d";
+    };
 
-    # Add Chinese nix-channels location to speedup rebuilding for asian (Like ME!)
-    substituters = [
-      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
-      "https://mirror.sjtu.edu.cn/nix-channels/store"
-      "https://mirrors.ustc.edu.cn/nix-channels/store"
-      "https://cache.nixos.org/"
-    ];
+    settings = {
+      # Enabled Flake and it Required Command
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
 
-    http-connections = 128;
-    max-substitution-jobs = 128;
-    auto-optimise-store = true;
+      # Add Chinese nix-channels location to speedup rebuilding for asian (Like ME!)
+      substituters = [
+        "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+        "https://mirror.sjtu.edu.cn/nix-channels/store"
+        "https://mirrors.ustc.edu.cn/nix-channels/store"
+        "https://cache.nixos.org/"
+      ];
+
+      http-connections = 128;
+      max-substitution-jobs = 128;
+      auto-optimise-store = true;
+    };
   };
-
   # Set nixpkgs to allow proprietary packages on nixpkgs
   nixpkgs = {
     config = {
       allowUnfree = true;
     };
   };
-
   # Virtualization Support
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = ["pbmine"];

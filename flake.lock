@@ -258,11 +258,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1791222906,
-        "narHash": "sha256-JnUjntWuK1gtwapgBPiyRfOqVoCka76ThALNuzwR79Y=",
+        "lastModified": 1791262609,
+        "narHash": "sha256-S7RdvEeTbydjPNVykmpy7QMOPytImpYMZrCvF1g9PA8=",
         "owner": "4evy",
         "repo": "nixcord",
-        "rev": "3db93db422f13313b089bed19ec3ffd790de6310",
+        "rev": "7cad323caed30b3555d56aec096e2b3dadddbbd4",
         "type": "github"
       },
       "original": {
@@ -434,11 +434,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791223438,
-        "narHash": "sha256-GyFajxqacoKzhSJXvKlra8g1RwLRIaKhK+c30FdgroA=",
+        "lastModified": 1791260458,
+        "narHash": "sha256-ar6lvXon8TcQ7S0xZPS3zPmfB43vhZnDl1rK86r7koI=",
         "ref": "refs/heads/master",
-        "rev": "8fd0e25844ae4d8ade4c56c0e5be3c84966c5bc6",
-        "revCount": 866,
+        "rev": "11ca60be22b063478ed9586ca1d7f92f0f261caf",
+        "revCount": 867,
         "type": "git",
         "url": "https://git.outfoxxed.me/quickshell/quickshell"
       },
