@@ -21,6 +21,7 @@
 
     http-connections = 128;
     max-substitution-jobs = 128;
+    auto-optimise-store = true;
   };
 
   # Set nixpkgs to allow proprietary packages on nixpkgs
