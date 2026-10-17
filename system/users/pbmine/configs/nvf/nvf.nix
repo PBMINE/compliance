@@ -10,7 +10,11 @@
 
     presence.cord-nvim.enable = true;
 
-    filetree.neo-tree.enable = true;
+    filetree = {
+      neo-tree = {
+        enable = true;
+      };
+    };
 
     tabline.nvimBufferline.enable = true;
 
@@ -98,6 +102,13 @@
     formatter = {
       conform-nvim = {
         enable = true;
+        setupOpts = {
+          formatters_by_ft = {
+            luau = [
+              "stylua"
+            ];
+          };
+        };
         presets = {
           stylua = {
             enable = true;
