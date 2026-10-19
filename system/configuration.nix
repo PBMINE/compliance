@@ -4,8 +4,6 @@
     ./disko/disk-config.nix
   ];
 
-  hardware.amdgpu.initrd.enable = true;
-
   programs.nh = {
     enable = true;
     clean = {
@@ -47,7 +45,7 @@
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = ["pbmine"];
 
-  hardware.opentabletdriver.enable = true;
+  # Bootloader Stuff + Kernel
 
   boot.kernelParams = ["drm.panic_screen=qr_code"];
 
@@ -64,6 +62,12 @@
   boot.loader.efi = {
     efiSysMountPoint = "/boot";
   };
+
+  # Hardware Related Settings
+
+  hardware.opentabletdriver.enable = true;
+
+  hardware.amdgpu.initrd.enable = true;
 
   hardware.uinput.enable = true;
 
@@ -100,11 +104,16 @@
   };
 
   # Global Services!
-  services.displayManager.sddm = {
-    enable = true;
-    wayland = {
+  services.displayManager = {
+    autoLogin = {
       enable = true;
-      compositor = "kwin";
+      user = "pbmine";
+    };
+    sddm = {
+      enable = true;
+      wayland = {
+        enable = true;
+      };
     };
   };
 
