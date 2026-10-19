@@ -4,13 +4,18 @@
     ./disko/disk-config.nix
   ];
 
-  nix = {
-    gc = {
-      automatic = true;
-      dates = "3d";
-      options = "--delete-older-than 3d";
-    };
+  hardware.amdgpu.initrd.enable = true;
 
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
+      dates = "3d";
+      extraArgs = "--keep-since 3d --keep 3";
+    };
+  };
+
+  nix = {
     settings = {
       # Enabled Flake and it Required Command
       experimental-features = [
@@ -37,6 +42,7 @@
       allowUnfree = true;
     };
   };
+
   # Virtualization Support
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = ["pbmine"];

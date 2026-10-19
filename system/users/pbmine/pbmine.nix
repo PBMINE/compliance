@@ -72,6 +72,11 @@ in {
   # Enable OBS for recording!
   programs.obs-studio.enable = true;
 
+  programs.nh = {
+    enable = true;
+    flake = "/home/pbmine/compliance";
+  };
+
   programs.nvf = {
     enable = true;
     # Import the settings instead of writing down here!
