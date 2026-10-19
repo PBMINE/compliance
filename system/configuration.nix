@@ -115,6 +115,7 @@
         enable = true;
       };
     };
+    defaultSession = "niri";
   };
 
   # Flatpak for specfic app

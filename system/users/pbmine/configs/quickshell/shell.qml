@@ -31,7 +31,7 @@ PanelWindow {
         property color colBlue: Colors.md3.primary
 
         property string fontFamily: "Iosevka Nerd Font"
-        property int fontSize: 12
+        property int fontSize: 14
 
         // System
         property int cpuUsage: 0
