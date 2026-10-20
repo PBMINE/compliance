@@ -37,7 +37,10 @@
                 subvolumes = {
                   "/root" = {
                     mountpoint = "/";
-                    mountOptions = ["compress=zstd"];
+                    mountOptions = [
+                      "compress=zstd"
+                      "noatime"
+                    ];
                   };
                   "/home" = {
                     mountOptions = ["compress=zstd"];
