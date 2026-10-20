@@ -66,6 +66,9 @@ in {
   # Declare Flatpak from modules
   services.flatpak = import ./configs/flatpak/flatpak.nix;
 
+  # Disk Mounting
+  services.udiskie.enable = true;
+
   # Temp lock-screen services (To be replace with quickshell)
   programs.swaylock.enable = true;
 

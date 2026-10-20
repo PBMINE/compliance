@@ -29,8 +29,8 @@
         "https://cache.nixos.org/"
       ];
 
-      http-connections = 128;
-      max-substitution-jobs = 128;
+      http-connections = 64;
+      max-substitution-jobs = 64;
       auto-optimise-store = true;
     };
   };
@@ -105,6 +105,11 @@
   };
 
   # Global Services!
+
+  services.gvfs.enable = true;
+
+  services.udisks2.enable = true;
+
   services.displayManager = {
     autoLogin = {
       enable = true;
