@@ -41,9 +41,10 @@
     };
   };
 
+  # Temporary
   # Virtualization Support
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = ["pbmine"];
+  # virtualisation.virtualbox.host.enable = true;
+  # users.extraGroups.vboxusers.members = ["pbmine"];
 
   # Bootloader Stuff + Kernel
 
