@@ -38,7 +38,6 @@ in {
     pwvucontrol
     pfetch-rs
     nautilus
-    btop
     krita
     opencode-desktop
     # Opencode DOES have HM but not right now!
@@ -56,6 +55,9 @@ in {
       line_break.disabled = true;
     };
   };
+
+  # Home manage BTOP
+  programs.btop.enable = true;
 
   # A Window Manager
   programs.niri = import ./configs/niri/niri.nix {inherit pkgs lib;};
