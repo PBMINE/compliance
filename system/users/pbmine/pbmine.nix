@@ -45,6 +45,7 @@ in {
     rust-analyzer
     inputs.matugen.packages.${pkgs.stdenv.hostPlatform.system}.default
     xwayland-satellite-unstable
+    sdl3.lib
     arduino-ide
   ];
 
