@@ -151,6 +151,8 @@
       json.enable = true;
       lua.enable = true;
       bash.enable = true;
+      xml.enable = true;
+      yaml.enable = true;
     };
   };
 }
