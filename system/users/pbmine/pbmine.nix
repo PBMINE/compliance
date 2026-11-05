@@ -39,9 +39,9 @@ in {
     pfetch-rs
     nautilus
     krita
-    opencode-desktop
+    # opencode-desktop
     # Opencode DOES have HM but not right now!
-    opencode
+    # opencode
     rust-analyzer
     inputs.matugen.packages.${pkgs.stdenv.hostPlatform.system}.default
     xwayland-satellite-unstable
