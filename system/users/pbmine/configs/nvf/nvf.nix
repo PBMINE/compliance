@@ -21,7 +21,7 @@
     extraPackages = [
       inputs.qml-language-server.packages.${pkgs.stdenv.hostPlatform.system}.default
       pkgs.luau-lsp
-      pkgs.rojo
+      # pkgs.rojo
       pkgs.imagemagick
       pkgs.ghostscript
     ];

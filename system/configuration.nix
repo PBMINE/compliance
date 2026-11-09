@@ -29,8 +29,8 @@
         "https://cache.nixos.org/"
       ];
 
-      http-connections = 64;
-      max-substitution-jobs = 64;
+      # http-connections = 64;
+      # max-substitution-jobs = 64;
       auto-optimise-store = true;
     };
   };
@@ -137,7 +137,6 @@
       support32Bit = true;
     };
     wireplumber.enable = true;
-    jack.enable = true;
     pulse.enable = true;
   };
 
@@ -161,11 +160,16 @@
   # Install Steam
   programs.steam.enable = true;
 
-  # Temporary only!!! (I'll find a way soon, I promise!!!)
-  environment.pathsToLink = [
-    "/share/applications"
-    "/share/xdg-desktop-portal"
-  ];
+  # eh not really it still needed
+  environment = {
+    pathsToLink = [
+      "/share/applications"
+      "/share/xdg-desktop-portal"
+    ];
+    sessionVariables = {
+      SDL_VIDEO_DRIVER = "wayland";
+    };
+  };
 
   system.stateVersion = "26.11";
 }

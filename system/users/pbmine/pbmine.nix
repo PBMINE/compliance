@@ -42,6 +42,7 @@ in {
     # opencode-desktop
     # Opencode DOES have HM but not right now!
     # opencode
+    zstd
     rust-analyzer
     inputs.matugen.packages.${pkgs.stdenv.hostPlatform.system}.default
     xwayland-satellite-unstable
