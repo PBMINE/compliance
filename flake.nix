@@ -81,7 +81,20 @@
         niri.nixosModules.niri
         users-secrets.nixosModules.secret-user
         {
-          nixpkgs.overlays = [inputs.niri.overlays.niri];
+          nixpkgs.overlays = [
+            inputs.niri.overlays.niri
+
+            # TO override the compling error on rojo
+            (final: prev: {
+              rojo = prev.rojo.overrideAttrs (old: {
+                buildInputs =
+                  (old.buildInputs or [])
+                  ++ [
+                    final.zstd
+                  ];
+              });
+            })
+          ];
         }
         home-manager.nixosModules.home-manager
         {

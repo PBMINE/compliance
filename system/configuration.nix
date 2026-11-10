@@ -167,9 +167,8 @@
       "/share/xdg-desktop-portal"
     ];
     sessionVariables = {
-      SDL_VIDEO_DRIVER = "wayland";
+      SDL_VIDEO_DRIVER = "wayland"; # Make minecraft USED wayland since niri dont advert the fifo-v1 yet :(
     };
   };
-
   system.stateVersion = "26.11";
 }
