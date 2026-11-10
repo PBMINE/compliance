@@ -4,7 +4,7 @@ import Quickshell.Io
 import QtQuick
 import QtQuick.Layouts
 import Niri
-import "Colors.qml"
+import qs.Theme as Theme
 
 PanelWindow {
         id: root
@@ -19,18 +19,24 @@ PanelWindow {
                 bottom: true
         }
 
-        width: 800
+        BackgroundEffect.blurRegion: Region {
+                item: panel
+                radius: panel.radius
+        }
 
-        implicitHeight: 40
+        implicitWidth: 800
+
+        implicitHeight: 50
 
         // Font and color
-        property color colBg: Qt.alpha(Colors.md3.background, 0.85)
+        property color colBg: Qt.alpha(Theme.Matugen.md3.background, 0.85)
 
-        property color colWhite: Colors.md3.on_surface
-        property color colMuted: Qt.alpha(Colors.md3.outline_variant, 0.85)
-        property color colBlue: Colors.md3.primary
+        property color colWhite: Theme.Matugen.md3.on_surface
+        property color colMuted: Qt.alpha(Theme.Matugen.md3.outline_variant, 0.85)
+        property color colBlue: Theme.Matugen.md3.primary
 
         property string fontFamily: "Iosevka Nerd Font"
+
         property int fontSize: 14
 
         // System
@@ -95,10 +101,12 @@ PanelWindow {
         }
 
         Rectangle {
+                id: panel
                 anchors.fill: parent
                 color: root.colBg
                 border.color: root.colMuted
                 border.width: 2
+                radius: 20
                 RowLayout {
                         anchors.fill: parent
                         anchors.margins: 8
@@ -109,8 +117,9 @@ PanelWindow {
                                         color: isActive ? root.colBlue : "transparent"
                                         Layout.fillHeight: true
                                         Layout.preferredWidth: height
+                                        radius: panel.radius * (height / panel.height)
                                         Text {
-                                                text: model.index
+                                                text: niri.workspaces.indexOfId(model.id) + 1
                                                 color: isActive ? root.colBg : root.colWhite
                                                 anchors.centerIn: parent
                                                 font {

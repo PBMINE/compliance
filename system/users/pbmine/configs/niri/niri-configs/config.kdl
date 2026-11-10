@@ -305,7 +305,7 @@ layer-rule {
 }
 
 layer-rule {
-    match namespace="^quickshell$"
+    match namespace="^quickshell$" 
     background-effect {
         blur true
     }

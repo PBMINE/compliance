@@ -93,10 +93,10 @@ in {
   programs.quickshell = {
     enable = true;
     package = customQuickshell;
-    configs = {
-      "shell.qml" = ./configs/quickshell/shell.qml;
-      "Colors.qml" = ./configs/quickshell/Colors.qml;
-    };
+    # configs = {
+    # "shell.qml" = ./configs/quickshell/shell.qml;
+    #"Colors.qml" = ./configs/quickshell/Colors.qml;
+    #};
   };
 
   # Productivity APP
@@ -156,6 +156,11 @@ in {
 
       "ghostty/shaders" = {
         source = makeSymlink "${config.home.homeDirectory}/compliance/system/users/pbmine/configs/ghostty/shaders";
+      };
+
+      "quickshell" = {
+        source = makeSymlink "${config.home.homeDirectory}/compliance/system/users/pbmine/configs/quickshell";
+        recursive = true;
       };
     }
   ];

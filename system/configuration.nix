@@ -106,6 +106,8 @@
 
   # Global Services!
 
+  services.upower.enable = true; # Enable it for Quickshell to access it
+
   services.gvfs.enable = true;
 
   services.udisks2.enable = true;
