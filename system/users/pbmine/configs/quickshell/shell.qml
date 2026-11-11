@@ -5,6 +5,7 @@ import QtQuick
 import QtQuick.Layouts
 import Niri
 import qs.Theme as Theme
+import Quickshell.Services.UPower
 
 PanelWindow {
         id: root
@@ -26,7 +27,7 @@ PanelWindow {
 
         implicitWidth: 800
 
-        implicitHeight: 50
+        implicitHeight: 47
 
         // Font and color
         property color colBg: Qt.alpha(Theme.Matugen.md3.background, 0.85)
@@ -78,25 +79,12 @@ PanelWindow {
                 Component.onCompleted: running = true
         }
 
-        Process {
-                id: batteryTrack
-                command: ["sh", "-c", "cat /sys/class/power_supply/BAT0/capacity"]
-                stdout: SplitParser {
-                        onRead: data => {
-                                var battery = data.trim();
-                                batteryPercentage = battery;
-                        }
-                }
-                Component.onCompleted: running = true
-        }
-
         Timer {
                 interval: 2000
                 running: true
                 repeat: true
                 onTriggered: {
                         cpuProc.running = true;
-                        batteryTrack.running = true;
                 }
         }
 
@@ -110,6 +98,7 @@ PanelWindow {
                 RowLayout {
                         anchors.fill: parent
                         anchors.margins: 8
+
                         Repeater {
                                 model: niri.workspaces
                                 Rectangle {
@@ -141,43 +130,64 @@ PanelWindow {
                                 Layout.fillWidth: true
                         }
 
-                        Text {
-                                text: "Battery " + batteryPercentage + "%"
-                                color: root.colWhite
-                                font {
-                                        family: root.fontFamily
-                                        pixelSize: root.fontSize
-                                        bold: true
-                                }
-                        }
-
                         Rectangle {
-                                width: 1
-                                height: 16
-                                color: root.colMuted
-                        }
+                                id: batteryIcon
 
-                        Text {
-                                text: "CPU " + cpuUsage + "%"
-                                color: root.colWhite
-                                font {
-                                        family: root.fontFamily
-                                        pixelSize: root.fontSize
-                                        bold: true
+                                visible: UPower.displayDevice.ready && UPower.displayDevice.isPresent
+
+                                width: 32
+                                height: 16
+                                Layout.rightMargin: 10
+                                radius: panel.radius * (height / panel.height)
+                                color: Qt.alpha("#555555", 0.75)
+                                clip: true
+
+                                readonly property real batteryPercentage: UPower.displayDevice.percentage * 100
+
+                                readonly property bool charging: UPower.displayDevice.state === UPowerDeviceState.Charging
+
+                                Rectangle {
+                                        id: batteryFill
+
+                                        width: batteryIcon.width * batteryIcon.batteryPercentage / 100
+                                        height: parent.height
+                                        radius: panel.radius * (height / panel.height)
+
+                                        color: batteryIcon.charging ? "#7CFC00" : batteryIcon.batteryPercentage <= 20 ? "#ff4444" : "#ffffff"
+
+                                        Behavior on width {
+                                                NumberAnimation {
+                                                        duration: 200
+                                                }
+                                        }
+
+                                        Behavior on color {
+                                                ColorAnimation {
+                                                        duration: 150
+                                                }
+                                        }
                                 }
-                        }
 
-                        Rectangle {
-                                width: 1
-                                height: 16
-                                color: root.colMuted
+                                Text {
+                                        anchors.centerIn: parent
+
+                                        text: Math.round(batteryIcon.batteryPercentage)
+                                        color: "#000000"
+
+                                        font {
+                                                family: root.fontFamily
+                                                pixelSize: root.fontSize - 2
+                                                bold: true
+                                        }
+                                }
                         }
 
                         Text {
                                 id: clock
-                                text: Qt.formatDateTime(new Date(), "ddd, MMM dd - HH:mm")
+                                text: Qt.formatDateTime(new Date(), "MMM dd | HH:mm")
                                 color: root.colWhite
                                 Layout.rightMargin: 10
+                                Layout.leftMargin: 10
                                 font {
                                         family: root.fontFamily
                                         pixelSize: root.fontSize
@@ -188,7 +198,7 @@ PanelWindow {
                                         interval: 1000
                                         running: true
                                         repeat: true
-                                        onTriggered: clock.text = Qt.formatDateTime(new Date(), "ddd, MMM dd - HH:mm")
+                                        onTriggered: clock.text = Qt.formatDateTime(new Date(), "MMM dd | HH:mm")
                                 }
                         }
                 }
