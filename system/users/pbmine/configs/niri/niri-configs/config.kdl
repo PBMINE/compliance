@@ -290,6 +290,12 @@ window-rule {
 
     }
 }
+
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
 // Open the Firefox picture-in-picture player as floating by default.
 window-rule {
     // This app-id regular expression will work for both:
