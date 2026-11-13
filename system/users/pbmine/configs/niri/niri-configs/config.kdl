@@ -237,6 +237,16 @@ overview {
     }
 }
 
+workspace "1"
+workspace "2"
+workspace "3"
+workspace "4"
+workspace "5"
+workspace "6"
+workspace "7"
+workspace "8"
+workspace "9"
+
 
 include "./colors.kdl"
 // Add lines like this to spawn processes at startup.
