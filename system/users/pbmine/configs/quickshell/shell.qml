@@ -70,6 +70,7 @@ PanelWindow {
                                 model: niri.workspaces
 
                                 Rectangle {
+                                        id: workspacesbutton
                                         property bool isActive: model.isActive
 
                                         color: isActive ? root.primaryColor : "transparent"
@@ -89,12 +90,12 @@ PanelWindow {
                                                         pixelSize: root.fontSize
                                                         bold: true
                                                 }
+                                        }
 
-                                                MouseArea {
-                                                        anchors.fill: parent
-                                                        onClicked: niri.focusWorkspaceById(model.id)
-                                                        cursorShape: Qt.PointingHandCursor
-                                                }
+                                        MouseArea {
+                                                anchors.fill: parent
+                                                onClicked: niri.focusWorkspaceById(model.id)
+                                                cursorShape: Qt.PointingHandCursor
                                         }
                                 }
                         }
