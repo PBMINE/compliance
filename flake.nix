@@ -107,7 +107,7 @@
               imports = [
                 nixcord.homeModules.nixcord
                 nix-flatpak.homeManagerModules.nix-flatpak
-                nvf.homeManagerModules.default
+                nvf.homeModules.default
                 matugen.nixosModules.default
                 ./system/users/pbmine/pbmine.nix
               ];

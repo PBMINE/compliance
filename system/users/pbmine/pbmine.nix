@@ -40,12 +40,14 @@ in {
     nautilus
     krita
     # Opencode DOES have HM but not right now!
+    android-tools
     opencode
     rust-analyzer
     inputs.matugen.packages.${pkgs.stdenv.hostPlatform.system}.default
     xwayland-satellite-unstable
     sdl3.lib
     arduino-ide
+    spotify
   ];
 
   # Stylish Prompt
