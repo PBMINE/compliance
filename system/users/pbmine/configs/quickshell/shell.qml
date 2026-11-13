@@ -37,10 +37,6 @@ PanelWindow {
         property string fontFamily: "Iosevka Nerd Font"
         property int fontSize: 14
 
-        property int cpuUsage: 0
-        property var lastCpuIdle: 0
-        property var lastCpuTotal: 0
-
         Item {
                 Niri {
                         id: niri
@@ -112,7 +108,7 @@ PanelWindow {
 
                                 visible: UPower.displayDevice.ready && UPower.displayDevice.isPresent
 
-                                Layout.preferredWidth: 32
+                                Layout.preferredWidth: 33
                                 Layout.preferredHeight: 16
                                 Layout.rightMargin: 10
 
@@ -130,7 +126,7 @@ PanelWindow {
                                         anchors.verticalCenter: parent.verticalCenter
 
                                         radius: panel.radius * (height / panel.height)
-                                        color: Qt.alpha("#555555", 0.75)
+                                        color: Qt.alpha("#555555", 0.55)
                                         clip: true
 
                                         Rectangle {
@@ -140,8 +136,7 @@ PanelWindow {
                                                 height: parent.height
                                                 radius: batteryIndicator.radius
 
-                                                color: batteryIcon.isCharging ? "#7CFC00" : batteryIcon.batteryPercentage <= 20 ? "#ff4444" : "#ffffff"
-
+                                                color: Qt.alpha(batteryIcon.isCharging ? "#7CFC00" : batteryIcon.batteryPercentage <= 20 ? "#ff4444" : "#ffffff", 0.85)
                                                 Behavior on width {
                                                         NumberAnimation {
                                                                 duration: 200
@@ -156,7 +151,10 @@ PanelWindow {
                                         }
 
                                         Text {
-                                                anchors.centerIn: parent
+                                                anchors.fill: parent
+
+                                                horizontalAlignment: Text.AlignHCenter
+                                                verticalAlignment: Text.AlignVCenter
 
                                                 text: Math.round(batteryIcon.batteryPercentage)
                                                 color: "#000000"
@@ -176,9 +174,10 @@ PanelWindow {
                                         height: 7
 
                                         anchors.left: batteryIndicator.right
+                                        anchors.leftMargin: 2
                                         anchors.verticalCenter: batteryIndicator.verticalCenter
 
-                                        radius: 1
+                                        radius: panel.radius * (height / panel.height)
                                         color: batteryIndicator.color
                                 }
                         }
