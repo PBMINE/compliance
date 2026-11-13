@@ -127,7 +127,7 @@ PanelWindow {
                                         anchors.verticalCenter: parent.verticalCenter
 
                                         radius: panel.radius * (height / panel.height)
-                                        color: Qt.alpha("#555555", 0.55)
+                                        color: Qt.alpha("#ffffff", 0.50)
                                         clip: true
 
                                         Rectangle {
