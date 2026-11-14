@@ -14,8 +14,9 @@
     "xhci_pci"
     "sdhci_pci"
   ];
+
   boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-amd" "uinput"];
+  boot.kernelModules = ["kvm-amd"];
   boot.extraModulePackages = [];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

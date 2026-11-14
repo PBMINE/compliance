@@ -41,8 +41,7 @@
     };
   };
 
-  # Temporary
-  # Virtualization Support
+  # For who wanted virtualization support
   # virtualisation.virtualbox.host.enable = true;
   # users.extraGroups.vboxusers.members = ["pbmine"];
 
@@ -52,6 +51,9 @@
 
   # Set NixOS to use Bleeding Edge kernel (eg rc.1,rc.2)
   boot.kernelPackages = pkgs.linuxPackages_testing;
+
+  #  move stuff from machine genarate hardware config
+  boot.kernelModules = ["uinput"];
 
   boot.loader.grub = {
     enable = true;
@@ -71,6 +73,22 @@
   hardware.amdgpu.initrd.enable = true;
 
   hardware.uinput.enable = true;
+
+  hardware.enableRedistributableFirmware = true;
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Experimental = true;
+        FastConnectable = true;
+      };
+      policy = {
+        AutoEnable = true;
+      };
+    };
+  };
 
   hardware.graphics = {
     enable = true;
@@ -105,6 +123,9 @@
   };
 
   # Global Services!
+
+  # Bluetooth
+  services.blueman.enable = true;
 
   services.upower.enable = true; # Enable it for Quickshell to access it
 
