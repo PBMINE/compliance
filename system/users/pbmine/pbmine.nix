@@ -100,18 +100,6 @@ in {
     #};
   };
 
-  # Productivity APP
-  programs.obsidian = {
-    enable = true;
-
-    vaults.notes.target = "Documents/Obsidian";
-
-    defaultSettings.app = {
-      alwaysUpdateLinks = true;
-      spellcheck = true;
-    };
-  };
-
   programs.nixcord = import ./configs/nixcord/nixcord.nix;
 
   # a bunch of programs for user
