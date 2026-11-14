@@ -171,8 +171,8 @@ PanelWindow {
                                 Rectangle {
                                         id: batteryTerminal
 
-                                        width: 3
-                                        height: 7
+                                        width: 2
+                                        height: 8
 
                                         anchors.left: batteryIndicator.right
                                         anchors.leftMargin: 2
