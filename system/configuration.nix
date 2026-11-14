@@ -125,6 +125,8 @@
   # Global Services!
 
   # Bluetooth
+  services.bootvine.enable = true;
+
   services.blueman.enable = true;
 
   services.upower.enable = true; # Enable it for Quickshell to access it

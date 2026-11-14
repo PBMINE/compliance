@@ -57,6 +57,11 @@
       url = "github:InioX/Matugen";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    bootvine = {
+      url = "git+https://codeberg.org/wvhulle/bootvine";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -69,6 +74,7 @@
     niri,
     users-secrets,
     matugen,
+    bootvine,
     ...
   } @ inputs: {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
@@ -79,6 +85,7 @@
         ./system/configuration.nix
         disko.nixosModules.disko
         niri.nixosModules.niri
+        bootvine.nixosModules.default
         users-secrets.nixosModules.secret-user
         {
           nixpkgs.overlays = [
