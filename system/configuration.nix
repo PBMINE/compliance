@@ -53,7 +53,7 @@
   boot.kernelPackages = pkgs.linuxPackages_testing;
 
   #  move stuff from machine genarate hardware config
-  boot.kernelModules = ["uinput"];
+  boot.kernelModules = ["uinput" "ntsync"];
 
   boot.loader.grub = {
     enable = true;
@@ -184,6 +184,9 @@
 
   # Install Steam
   programs.steam.enable = true;
+
+  # Install gamemode
+  programs.gamemode.enable = true;
 
   # eh not really it still needed
   environment = {

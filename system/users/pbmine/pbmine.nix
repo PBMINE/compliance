@@ -33,6 +33,29 @@ in {
     };
   };
 
+  # GTK Setting duh
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Adwaita-dark";
+      package = pkgs.gnome-themes-extra;
+    };
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+  };
+
+  # GTK Dconf
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+      gtk-theme = "Adwaita-dark";
+    };
+  };
+
   # A packages that doesnt required for home to manage it
   home.packages = with pkgs; [
     pwvucontrol
