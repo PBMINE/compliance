@@ -66,6 +66,7 @@ in {
     android-tools
     opencode
     rust-analyzer
+    bluetui
     inputs.matugen.packages.${pkgs.stdenv.hostPlatform.system}.default
     xwayland-satellite-unstable
     sdl3.lib
