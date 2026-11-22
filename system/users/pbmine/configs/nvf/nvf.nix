@@ -2,7 +2,24 @@
   inputs,
   pkgs,
   ...
-}: {
+}: let
+  luau-lsp-latest = pkgs.luau-lsp.overrideAttrs (oldAttrs: {
+    version = "1.70.1";
+    src = pkgs.fetchFromGitHub {
+      owner = "JohnnyMorganz";
+      repo = "luau-lsp";
+      rev = "0de6a18a0259de9596264e925c1bb4e12ad754e8";
+      fetchSubmodules = true;
+      hash = "sha256-MB4wTEtaXlKEE/vOE8zRSbPenuvuoAu1v0T5rypRuuM=";
+    };
+
+    nativeBuildInputs =
+      (oldAttrs.nativeBuildInputs or [])
+      ++ [
+        pkgs.python3
+      ];
+  });
+in {
   vim = {
     statusline.lualine.enable = true;
     telescope.enable = true;
@@ -20,7 +37,7 @@
 
     extraPackages = [
       inputs.qml-language-server.packages.${pkgs.stdenv.hostPlatform.system}.default
-      pkgs.luau-lsp
+      luau-lsp-latest
       pkgs.rojo
       pkgs.imagemagick
       pkgs.ghostscript
@@ -79,6 +96,43 @@
             rojo_project_file = "default.project.json";
             include_non_scripts = true;
             sourcemap_file = "sourcemap.json";
+          };
+          fflags = {
+            enable_by_default = true;
+
+            enable_new_solver = true;
+
+            sync = true;
+
+            override = {
+              LuauExperimentalIfLocalSyntax = true;
+              LuauExperimentalIfLocalAnalysis = true;
+
+              LuauExperimentalWhileLocalSyntax = true;
+              LuauExperimentalWhileLocalAnalysis = true;
+
+              LuauExportValueSyntax = true;
+              LuauExportValueTypecheck = true;
+              LuauExportAnnotationBinding = true;
+              LuauExportTypecheckTypepacks = true;
+              LuauCyclicRequireTypeInference = true;
+              LuauCyclicRequireTopLevelAccessError = true;
+              LuauExportedTypesParticipateInScc = true;
+              LuauOptimizeExportTable = true;
+
+              LuauCoroutineFinally = true;
+              LuauCoroutineFinallyAnalysis = true;
+
+              DebugLuauUserDefinedClassesRuntime = true;
+              DebugLuauUserDefinedClasses = true;
+              LuauAllowGlobalDeclarationToBeCalledClass = true;
+
+              LuauUseExplicitTypeArgsInGenerics = true;
+              LuauAutocompleteIfSlurpsCond = true;
+              LuauAutocompleteDotMethodConversion = true;
+              LuauRefactorAutocompleteAncestry = true;
+              LuauFindFullAncestryLooksIntoTypePacks = true;
+            };
           };
         };
       };
