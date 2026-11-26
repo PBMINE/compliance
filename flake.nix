@@ -85,6 +85,7 @@
         ./system/configuration.nix
         disko.nixosModules.disko
         niri.nixosModules.niri
+        nix-flatpak.nixosModules.nix-flatpak
         bootvine.nixosModules.default
         users-secrets.nixosModules.secret-user
         {

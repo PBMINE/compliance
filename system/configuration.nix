@@ -146,7 +146,10 @@
   };
 
   # Flatpak for specfic app
-  services.flatpak.enable = true;
+  services.flatpak = {
+    enable = true;
+    update.onActivation = true;
+  };
 
   # Sound Services
   # Enable Real-Time access for pipewire
